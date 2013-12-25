@@ -14,6 +14,7 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Component requirements
+gem 'omniauth'
 gem 'compass'
 gem 'haml'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
@@ -33,3 +34,5 @@ gem 'padrino', '0.11.4'
 # %w(core gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.11.4'
 # end
+
+gem 'omniauth-twitter'

@@ -1,5 +1,6 @@
 module Server
   class App < Padrino::Application
+    register OmniauthInitializer
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Rendering
     register Padrino::Mailer
