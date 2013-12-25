@@ -1,0 +1,9 @@
+---
+:orm: activerecord
+:test: rspec
+:mock: none
+:script: jquery
+:renderer: haml
+:stylesheet: compass
+:namespace: Server
+:migration_format: number
