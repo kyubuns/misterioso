@@ -22,6 +22,7 @@ GEM
     diff-lcs (1.2.5)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
+    forgery (0.5.0)
     fssm (0.2.10)
     haml (4.0.4)
       tilt
@@ -111,6 +112,7 @@ DEPENDENCIES
   activerecord (>= 3.1)
   compass
   factory_girl
+  forgery
   haml
   mysql2
   omniauth

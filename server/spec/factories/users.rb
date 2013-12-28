@@ -1,9 +1,11 @@
+require 'forgery'
+
 FactoryGirl.define do
   factory :user do
-    uid "1"
-    name "test"
-    provider "unknown"
-    provider_id "name"
+    uid Forgery::Name.full_name
+    name Forgery::Name.full_name
+    provider Forgery::Name.company_name
+    provider_id Forgery::Name.full_name
     role "members"
   end
 end
