@@ -1,0 +1,2 @@
+padrino rake ar:reset -e test
+padrino rake spec
