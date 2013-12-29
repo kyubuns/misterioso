@@ -11,16 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2) do
+ActiveRecord::Schema.define(:version => 3) do
 
   create_table "users", :force => true do |t|
-    t.string   "uid"
-    t.string   "name"
-    t.string   "provider"
-    t.string   "provider_id"
-    t.string   "role"
+    t.string   "uid",         :null => false
+    t.string   "name",        :null => false
+    t.string   "provider",    :null => false
+    t.string   "provider_id", :null => false
+    t.string   "role",        :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "ap",          :null => false
   end
+
+  add_index "users", ["uid", "provider"], :name => "index_users_on_uid_and_provider", :unique => true
 
 end
