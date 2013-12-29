@@ -1,2 +1,2 @@
-padrino rake ar:reset -e test
+padrino rake ar:migrate:reset -e test
 padrino rake spec
