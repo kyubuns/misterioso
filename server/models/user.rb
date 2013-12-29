@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
       user.create_character ({
         # dummy datas
         name: auth['info']['name'],
-        ap:     10,
         max_ap: 10,
+        ap:     10,
       })
     end
   end
