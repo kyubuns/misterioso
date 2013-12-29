@@ -13,15 +13,22 @@
 
 ActiveRecord::Schema.define(:version => 3) do
 
+  create_table "characters", :force => true do |t|
+    t.string   "name",           :null => false
+    t.integer  "ap",             :null => false
+    t.integer  "max_ap",         :null => false
+    t.datetime "ap_recorded_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "uid",         :null => false
-    t.string   "name",        :null => false
     t.string   "provider",    :null => false
     t.string   "provider_id", :null => false
     t.string   "role",        :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "ap",          :null => false
   end
 
   add_index "users", ["uid", "provider"], :name => "index_users_on_uid_and_provider", :unique => true
