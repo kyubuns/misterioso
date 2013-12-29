@@ -16,6 +16,8 @@ describe User do
       user.provider.should    == 'twitter'
       user.provider_id.should == 'kyubuns'
       user.role.should        == 'members'
+
+      user.character.name.should == 'きゅぶんず'
     end
   end
 end
