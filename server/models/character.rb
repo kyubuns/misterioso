@@ -14,4 +14,10 @@ class Character < ActiveRecord::Base
     write_attribute(:ap, value)
     write_attribute(:ap_recorded_at, Time.now)
   end
+
+  def ap
+    v = read_attribute(:ap)
+    dif = (Time.now.to_time.to_i - ap_recorded_at.to_time.to_i)/60
+    [v + dif, max_ap].min
+  end
 end

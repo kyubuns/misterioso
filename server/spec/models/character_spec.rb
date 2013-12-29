@@ -5,7 +5,10 @@ describe Character do
     describe "update ap_recorded_at when operate ap" do
       let(:character) { FactoryGirl.create :character, max_ap: 10, ap: 5 }
       let(:now) { Time.local 2013,12,29,12,0,0 }
-      before(:each) { Time.stub(:now).and_return now }
+      before(:each) {
+        Time.stub(:now).and_return now
+        character.ap = 5
+      }
 
       it "operator =" do
         character.ap = 8
@@ -41,6 +44,26 @@ describe Character do
         expect { character.ap -= 10 }.to raise_error
       end
 
+    end
+
+    describe "recover ap" do
+      let(:character) { FactoryGirl.create :character, max_ap: 10, ap: 5 }
+      let(:now) { Time.local 2013,12,29,12,0,0 }
+      before(:each) { Time.stub(:now).and_return now }
+
+      it "1 point / 1 minute" do
+        character.ap = 0
+
+        Time.stub(:now).and_return now + 3.minutes
+        character.ap.should == 3
+      end
+
+      it "don't over max_ap" do
+        character.ap = 0
+
+        Time.stub(:now).and_return now + 2.days
+        character.ap.should == 10
+      end
     end
   end
 end
