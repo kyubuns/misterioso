@@ -1,1 +1,6 @@
-%p #{character.name} [装備品:#{equipment_name character}] (所持金ランキング #{character.money_rank}位)
+%p
+  #{character.name}
+  [装備品:
+  %font(color="#{equipment_color character}")#{equipment_name character}
+  ]
+  (所持金ランキング #{character.money_rank}位)
