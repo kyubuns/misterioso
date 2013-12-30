@@ -13,27 +13,42 @@ Server::App.controllers :action do
   end
 
   get :work, :map => "/work", :protect => true do
-    current_account.character.work
+    begin
+      current_account.character.work
+    rescue
+    end
     redirect url("/mypage")
   end
 
   get :gacha, :map => "/gacha", :protect => true do
-    current_account.character.gacha
+    begin
+      current_account.character.gacha
+    rescue
+    end
     redirect url("/mypage")
   end
 
   get :ohuro, :map => "/ohuro", :protect => true do
-    current_account.character.ohuro
+    begin
+      current_account.character.ohuro
+    rescue
+    end
     redirect url("/mypage")
   end
 
   get :equip, :map => "/equip/:id", :protect => true do
-    current_account.character.equip params[:id]
+    begin
+      current_account.character.equip params[:id]
+    rescue
+    end
     redirect url("/mypage")
   end
 
   get :osaisen, :map => "/osaisen", :protect => true do
-    current_account.character.osaisen
+    begin
+      current_account.character.osaisen
+    rescue
+    end
     redirect url("/mypage")
   end
 end
