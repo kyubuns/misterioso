@@ -38,6 +38,20 @@
           %b [お金が足りません]
           300ゴールド消費して、カードをゲット！
 
+      - if @current_account.character.money >= 1000
+        %p
+          =link_to('お参りする', '/osaisen')
+          お賽銭に1000円いれて、目標金額ピッタリにするとレアカードゲット！
+      - else
+        %p
+          %font(color='gray')お参りする
+          %b [お金が足りません]
+          お賽銭に1000円いれて、目標金額ピッタリにするとレアカードゲット！
+      %p
+        目標金額まで
+        #{Jinja.nokori}
+        ゴールド
+
       - if @current_account.character.cards.count >= 1
         %p
           =link_to('風呂る', '/ohuro')
