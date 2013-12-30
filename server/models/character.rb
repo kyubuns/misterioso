@@ -23,6 +23,11 @@ class Character < ActiveRecord::Base
     [v + dif, max_ap].min
   end
 
+  def equip_card
+    return nil if equip_card_id == nil
+    self.cards.find(equip_card_id)
+  end
+
   # ranking
   def money_rank
     Character.where('money > ?', self.money).count + 1
@@ -58,6 +63,13 @@ class Character < ActiveRecord::Base
     delete_card(self.cards.shuffle[0].id)
     self.max_ap += 1
     self.ap += 1
+    save!
+  end
+
+  def equip(id)
+    card = self.cards.find(id)
+    raise "don't have the card" if card == nil
+    self.equip_card_id = card.id
     save!
   end
 
