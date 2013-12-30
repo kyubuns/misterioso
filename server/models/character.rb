@@ -57,7 +57,7 @@ class Character < ActiveRecord::Base
     raise "not enough card" if self.cards.count < 1
     delete_card(self.cards.shuffle[0].id)
     self.max_ap += 1
-    self.ap += 5
+    self.ap += 1
     save!
   end
 

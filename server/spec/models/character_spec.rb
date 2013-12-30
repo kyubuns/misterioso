@@ -172,8 +172,8 @@ describe Character do
       expect { character.ohuro }.to change { character.max_ap }.from(10).to(11)
     end
 
-    it "restore ap" do
-      expect { character.ohuro }.to change { character.ap }.from(0).to(5)
+    it "restore 1 ap" do
+      expect { character.ohuro }.to change { character.ap }.from(0).to(1)
     end
 
     it "use 1 card" do
