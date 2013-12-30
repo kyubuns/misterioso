@@ -3,7 +3,7 @@ class Jinja < ActiveRecord::Base
   validates :money, presence: true, numericality: true
   validates :grade, presence: true, numericality: true
 
-  TARGET_MONEY = 50000
+  TARGET_MONEY = 10000
 
   def self.osaisen(price)
     jinja = Jinja.first
