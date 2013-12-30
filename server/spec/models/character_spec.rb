@@ -68,7 +68,7 @@ describe Character do
   end
 
   describe "#work" do
-    let(:character) { FactoryGirl.create :character, max_ap: 10, ap: 10 }
+    let(:character) { FactoryGirl.create :character, max_ap: 10, ap: 10, money:0 }
 
     it "use 3 ap when work" do
       expect { character.work }.to change { character.ap }.from(10).to(7)
@@ -77,6 +77,11 @@ describe Character do
     it "raise error when not enough ap" do
       character.ap = 1
       expect { character.work }.to raise_error
+    end
+
+    it "get money!" do
+      Random.stub(:rand).and_return 100
+      expect { character.work }.to change { character.money }.from(0).to(100)
     end
   end
 end

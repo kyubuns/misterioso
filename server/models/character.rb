@@ -25,6 +25,7 @@ class Character < ActiveRecord::Base
   # action
   def work
     self.ap = self.ap - 3
+    self.money += Random.rand 1000
     save!
   end
 end
