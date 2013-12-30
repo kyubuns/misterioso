@@ -3,4 +3,5 @@ cp ../../misterioso_deploy/database.rb config/
 cp ../../misterioso_deploy/omniauth_initializer.rb lib/
 cp ../../misterioso_deploy/footer.haml app/views/
 padrino rake ar:migrate -e production
+padrino rake db:seed -e production
 padrino start -e production -h kyubuns.net -p 3000

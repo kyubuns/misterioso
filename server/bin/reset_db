@@ -1,1 +1,3 @@
+set -e
 padrino rake ar:migrate:reset -e development
+padrino rake db:seed
