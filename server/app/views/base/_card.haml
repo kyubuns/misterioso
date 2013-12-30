@@ -1,1 +1,3 @@
-%p #{link_to card.master_card.name, url_for(:action, :equip, :id => card.id)}
+%p
+  #{link_to '[装備]', url_for(:action, :equip, :id => card.id)}
+  #{card.master_card.name}
