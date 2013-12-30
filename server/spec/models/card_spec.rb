@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Cards do
+describe Card do
 end
