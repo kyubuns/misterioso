@@ -10,7 +10,7 @@
       = haml :header
 
       %p 名前: #{current_account.character.name}
-      %p 所持金: #{current_account.character.money}ゴールド
+      %p 所持金: #{current_account.character.money}ゴールド(#{current_account.character.money_rank}位)
       %p スタミナ: #{current_account.character.ap} / #{current_account.character.max_ap}
       %p スタミナは2分ごとに1回復します。
 

@@ -22,6 +22,11 @@ class Character < ActiveRecord::Base
     [v + dif, max_ap].min
   end
 
+  # ranking
+  def money_rank
+    Character.where('money > ?', self.money).count + 1
+  end
+
   # action
   def work
     self.ap = self.ap - 3
