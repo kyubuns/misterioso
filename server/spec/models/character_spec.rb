@@ -242,4 +242,44 @@ describe Character do
       expect { character.osaisen }.to raise_error
     end
   end
+
+  describe "#power" do
+    let(:character)   { FactoryGirl.create :character }
+    let(:master_card1) { FactoryGirl.create :master_card, code: 1, rarity: 1 }
+    let(:master_card2) { FactoryGirl.create :master_card, code: 2, rarity: 3 }
+    let(:master_card3) { FactoryGirl.create :master_card, code: 3, rarity: 5 }
+    before(:each) {
+      master_card1.save!
+      master_card2.save!
+      master_card3.save!
+    }
+
+    it "no card, no power" do
+      character.power.should == 0
+    end
+
+    it "rarity 1 card has 1**4 = 1 power" do
+      character.send(:add_card, 1)
+      character.power.should == 1
+
+      character.send(:add_card, 1)
+      character.power.should == 2
+    end
+
+    it "rarity 3 card has 3**4 = 81 power" do
+      character.send(:add_card, 2)
+      character.power.should == 81
+
+      character.send(:add_card, 2)
+      character.power.should == 81 * 2
+    end
+
+    it "rarity 3 card has 5**4 = 625 power" do
+      character.send(:add_card, 3)
+      character.power.should == 625
+
+      character.send(:add_card, 3)
+      character.power.should == 625 * 2
+    end
+  end
 end

@@ -28,6 +28,12 @@ class Character < ActiveRecord::Base
     self.cards.find_by_id(equip_card_id)
   end
 
+  def power
+    power = 0
+    cards.map{ |card| power += card.master_card.rarity**4 }
+    power
+  end
+
   # ranking
   def money_rank
     Character.where('money > ?', self.money).count + 1
