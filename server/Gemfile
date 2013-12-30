@@ -13,6 +13,7 @@ gem 'compass'
 gem 'haml'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'mysql2'
+gem 'weighted_randomizer'
 
 # Test requirements
 gem 'rspec', :group => 'test'
