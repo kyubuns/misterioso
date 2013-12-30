@@ -9,8 +9,13 @@ Server::App.helpers do
   end
 
   def equipment_color(character)
-    return 'black' if character.equip_card == nil
-    return 'black' if character.equip_card.master_card.name != '南ことり'
-    return 'red'
+    # TODO: 綺麗に書けそう
+    return 'black'        if character.equip_card == nil
+    return 'black'        if character.equip_card.master_card.rarity == 1
+    return 'orange'       if character.equip_card.master_card.rarity == 2
+    return 'forestgreenq' if character.equip_card.master_card.rarity == 3
+    return 'blue'         if character.equip_card.master_card.rarity == 4
+    return 'red'          if character.equip_card.master_card.rarity == 5
+    return 'gray'
   end
 end

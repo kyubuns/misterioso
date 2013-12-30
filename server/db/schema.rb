@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "cards", :force => true do |t|
     t.integer  "character_id",     :null => false
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(:version => 7) do
   end
 
   create_table "master_cards", :force => true do |t|
-    t.integer "code", :null => false
-    t.string  "name", :null => false
+    t.integer "code",   :null => false
+    t.string  "name",   :null => false
+    t.integer "rarity"
   end
 
   create_table "users", :force => true do |t|
