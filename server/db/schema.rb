@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(:version => 11) do
   end
 
   add_index "master_card_lineups", ["name"], :name => "index_master_card_lineups_on_name"
-  add_index "master_card_lineups", ["probability"], :name => "index_master_card_lineups_on_probability"
 
   create_table "master_cards", :force => true do |t|
     t.integer "code",   :null => false
