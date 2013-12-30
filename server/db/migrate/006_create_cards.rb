@@ -1,7 +1,7 @@
 class CreateCards < ActiveRecord::Migration
   def change
     create_table :master_cards do |t|
-      t.integer  :code, null: false
+      t.integer  :code, null: false, unique: true
       t.string   :name, null: false
     end
 
