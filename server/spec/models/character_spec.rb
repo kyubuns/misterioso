@@ -98,4 +98,20 @@ describe Character do
       character4.money_rank == 4
     end
   end
+
+  describe "#add_card" do
+    let(:master_card) { FactoryGirl.create :master_card, code: 10, name: '南ことり' }
+    let(:character)   { FactoryGirl.create :character, max_ap: 10, ap: 10 }
+    before(:each) { master_card.save! }
+
+    it "add normal card" do
+      card = character.send(:add_card, 10)
+      card.save!
+
+      card.character.should == character
+      card.master_card.should == master_card
+
+      character.cards.count.should == 1
+    end
+  end
 end

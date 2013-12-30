@@ -34,4 +34,11 @@ class Character < ActiveRecord::Base
     self.money += Random.rand 500
     save!
   end
+
+  private
+  def add_card(code)
+    cards.create!({
+      master_card_code: code
+    })
+  end
 end
