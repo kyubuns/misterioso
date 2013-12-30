@@ -35,6 +35,13 @@ class Character < ActiveRecord::Base
     save!
   end
 
+  def gacha
+    price = 300 #テキトー
+    raise "not enough money" if self.money < price
+    self.money -= price
+    add_card(Random.rand(43)+1)
+  end
+
   def delete_card(id)
     cards.delete(cards.find(id))
   end

@@ -145,4 +145,21 @@ describe Character do
       character.cards[1].master_card.should == master_card3
     end
   end
+
+  describe "#normal gacha" do
+    let(:character)   { FactoryGirl.create :character, money: 1000 }
+
+    it "use money" do
+      expect { character.gacha }.to change { character.money }.from(1000).to(700)
+    end
+
+    it "get new card" do
+      expect { character.gacha }.to change { character.cards.count }.from(0).to(1)
+    end
+
+    it "raise error, not enough money" do
+      character.money = 100
+      expect { character.gacha }.to raise_error
+    end
+  end
 end
