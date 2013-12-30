@@ -1,4 +1,15 @@
 Server::App.helpers do
+  # TODO: ここの定数別ファイルに出したい
+  EQUIPMENT_COLOR_TABLE = {
+    1 => 'black',
+    2 => 'orange',
+    3 => 'forestgreenq',
+    4 => 'blue',
+    5 => 'red',
+  }
+  EQUIPMENT_COLOR_DEFAULT = 'gray'
+  EQUIPMENT_COLOR_NOCARD = 'black'
+
   def online_characters
     Character.where('updated_at > ?', Time.now - 10.minutes)
   end
@@ -9,15 +20,10 @@ Server::App.helpers do
   end
 
   def equipment_color(character)
-    return 'black' unless character.equip_card
-
-    case character.equip_card.master_card.rarity
-      when 1 then 'black'
-      when 2 then 'orange'
-      when 3 then 'forestgreen'
-      when 4 then 'blue'
-      when 5 then 'gray'
-      else 'gray'
+    if character.equip_card
+      EQUIPMENT_COLOR_TABLE[character.equip_card.master_card.rarity] || EQUIPMENT_COLOR_DEFAULT
+    else
+      EQUIPMENT_COLOR_NOCARD
     end
   end
 end
