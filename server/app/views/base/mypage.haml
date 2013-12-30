@@ -62,7 +62,7 @@
         #{Jinja.nokori}
         ゴールド
 
-      - if @current_account.character.cards.count >= 1
+      - if @current_account.character.not_equipping_card_ids.count >= 1
         %p
           =link_to('風呂る', '/ohuro')
         %p(style="text-indent:2em;")
