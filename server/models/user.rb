@@ -17,8 +17,9 @@ class User < ActiveRecord::Base
         name: auth['info']['name'],
 
         # dummy datas
-        max_ap: 10,
-        ap:     10,
+        max_ap: 30,
+        ap:     30,
+        money:  0,
       })
     end
   end

@@ -6,6 +6,7 @@ class Character < ActiveRecord::Base
   validates :ap,             presence: true, numericality: true
   validates :max_ap,         presence: true, numericality: true
   validates :ap_recorded_at, presence: true
+  validates :money,          presence: true, numericality: true
 
   # AP
   def ap=(value)
