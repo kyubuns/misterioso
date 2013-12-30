@@ -148,6 +148,9 @@ describe Character do
 
   describe "#normal gacha" do
     let(:character)   { FactoryGirl.create :character, money: 1000 }
+    before(:each) {
+      MasterCardLineup.create(name: 'normal_gacha', card_code: 1, probability:  1)
+    }
 
     it "use money" do
       expect { character.gacha }.to change { character.money }.from(1000).to(700)
@@ -219,7 +222,10 @@ describe Character do
 
   describe "#osaisen" do
     let(:character)   { FactoryGirl.create :character, money: 10000 }
-    before(:each) { Jinja.create money: 0, grade: 0 }
+    before(:each) {
+      Jinja.create money: 0, grade: 0
+      MasterCardLineup.create(name: 'jinja', card_code: 1, probability:  1)
+    }
 
     it "use money" do
       expect { character.osaisen }.to change { character.money }.by(-1000)

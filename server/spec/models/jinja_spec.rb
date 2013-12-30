@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe Jinja do
   describe "#osaisen" do
-    before(:each) { Jinja.create money: 0, grade: 0 }
+    before(:each) {
+      Jinja.create money: 0, grade: 0
+      MasterCardLineup.create(name: 'jinja', card_code: 1, probability:  1)
+    }
 
     it "1000 yen" do
       Jinja.osaisen(1000)

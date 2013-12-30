@@ -7,7 +7,9 @@ class MasterCardLineup < ActiveRecord::Base
   def self.get(name)
     queues = {}
     MasterCardLineup.where('name = ?', name).map{ |lineup| queues[lineup.card_code] = lineup.probability }
-    WeightedRandomizer.new(queues).sample
+    result = WeightedRandomizer.new(queues).sample
+    raise "card lineup no data" unless result
+    result
   end
 
   private
