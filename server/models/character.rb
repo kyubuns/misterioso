@@ -18,13 +18,13 @@ class Character < ActiveRecord::Base
 
   def ap
     v = read_attribute(:ap)
-    dif = (Time.now.to_time.to_i - ap_recorded_at.to_time.to_i)/180
+    dif = (Time.now.to_time.to_i - ap_recorded_at.to_time.to_i)/120
     [v + dif, max_ap].min
   end
 
   # action
-  def work(value)
-    self.ap = self.ap - value
+  def work
+    self.ap = self.ap - 3
     save!
   end
 end

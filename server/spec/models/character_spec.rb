@@ -51,10 +51,10 @@ describe Character do
       let(:now) { Time.local 2013,12,29,12,0,0 }
       before(:each) { Time.stub(:now).and_return now }
 
-      it "1 point / 3 minute" do
+      it "1 point / 2 minute" do
         character.ap = 0
 
-        Time.stub(:now).and_return now + 9.minutes
+        Time.stub(:now).and_return now + 6.minutes
         character.ap.should == 3
       end
 
@@ -70,12 +70,13 @@ describe Character do
   describe "#work" do
     let(:character) { FactoryGirl.create :character, max_ap: 10, ap: 10 }
 
-    it "use ap when work" do
-      expect { character.work(3) }.to change { character.ap }.from(10).to(7)
+    it "use 3 ap when work" do
+      expect { character.work }.to change { character.ap }.from(10).to(7)
     end
 
     it "raise error when not enough ap" do
-      expect { character.work(11) }.to raise_error
+      character.ap = 1
+      expect { character.work }.to raise_error
     end
   end
 end

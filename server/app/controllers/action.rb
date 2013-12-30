@@ -8,7 +8,7 @@ Server::App.controllers :action do
   end
 
   get :work, :map => "/work" do
-    current_account.character.work(3)
+    current_account.character.work
     redirect url("/mypage")
   end
 end
