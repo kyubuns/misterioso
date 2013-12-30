@@ -59,8 +59,11 @@ class Character < ActiveRecord::Base
   end
 
   def ohuro
-    raise "not enough card" if self.cards.count < 1
-    delete_card(self.cards.shuffle[0].id)
+    ids = self.cards.map{ |card| card.id }
+    ids.delete(self.equip_card.id) if self.equip_card
+
+    raise "not enough card" if cards.count < 1
+    delete_card(ids.shuffle[0])
     self.max_ap += 1
     self.ap += 1
     save!

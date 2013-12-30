@@ -180,6 +180,15 @@ describe Character do
       expect { character.ohuro }.to change { character.cards.count }.from(1).to(0)
     end
 
+    it "don't use equipping card" do
+      character.send(:add_card, 1)
+      character.cards.count.should == 2
+
+      character.equip(1)
+      expect { character.ohuro }.to change { character.cards.count }.from(2).to(1)
+      expect { character.ohuro }.to raise_error
+    end
+
     it "raise error, not enough card" do
       character.ohuro
       expect { character.ohuro }.to raise_error
