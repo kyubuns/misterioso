@@ -39,7 +39,13 @@ class Character < ActiveRecord::Base
     price = 300 #テキトー
     raise "not enough money" if self.money < price
     self.money -= price
-    add_card(Random.rand(43)+1)
+    if Random.rand(1000) == 50
+      # 1/1000の確率でことりちゃんがでる
+      # ちゅんちゅん
+      add_card(100)
+    else
+      add_card(Random.rand(43)+1)
+    end
     save!
   end
 
