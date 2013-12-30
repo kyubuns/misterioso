@@ -5,7 +5,6 @@ module Server
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
-    register CompassInitializer
 
     register Padrino::Admin::AccessControl
     set :admin_model, 'User'

@@ -4,7 +4,7 @@ Server::App.controllers :base do
   end
 
   get :mypage, :map => "/mypage" do
-    redirect url("/home") unless current_account
+    redirect url("/") unless current_account
     render "base/mypage"
   end
 end

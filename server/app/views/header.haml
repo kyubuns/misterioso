@@ -1,0 +1,9 @@
+%ul(class='nav nav-tabs')
+  - if @current_account == nil
+    %li(class='active')
+      =link_to('Home', '/')
+  - else
+    %li(class='active')
+      =link_to('Home', '/')
+    %li
+      =link_to('Mypage', '/mypage')

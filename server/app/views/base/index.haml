@@ -1,2 +1,19 @@
-Login with
-=link_to('twitter', '/auth/twitter')
+-# cofing: UTF-8
+!!!
+%html
+  %head
+    %title= 'misterioso'
+    = stylesheet_link_tag 'bootstrap.min'
+    = javascript_include_tag 'jquery', 'bootstrap.min'
+  %body
+    #header
+      = haml :header
+
+    #container
+      - if @current_account == nil
+        =link_to('Twitterでログイン', '/auth/twitter')
+      - else
+        =link_to('Mypageはこちら', '/mypage')
+
+    #footer
+      = haml :footer
