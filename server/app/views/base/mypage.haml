@@ -16,7 +16,7 @@
       %p
         装備品:
         %font(color="#{equipment_color current_account.character}")#{equipment_name current_account.character}
-      %p 戦闘力: #{current_account.character.power}
+      %p 戦闘力: #{current_account.character.power}(#{current_account.character.power_rank}位)
       %p 所持金: #{current_account.character.money}ゴールド(#{current_account.character.money_rank}位)
       %p スタミナ: #{current_account.character.ap} / #{current_account.character.max_ap}
       %p(style="text-indent:2em;") スタミナは2分ごとに1回復します。
