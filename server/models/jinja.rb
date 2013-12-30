@@ -30,7 +30,6 @@ class Jinja < ActiveRecord::Base
   end
 
   def self.get_random_card_id
-    # TODO; 200~213 この値もどこか外部にだしたい
-    Random.rand(14)+200
+    MasterCardLineup.get('jinja')
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "cards", :force => true do |t|
     t.integer  "character_id",     :null => false
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(:version => 9) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "master_card_lineups", :force => true do |t|
+    t.string   "name",        :null => false
+    t.integer  "card_code",   :null => false
+    t.integer  "probability", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "master_card_lineups", ["name"], :name => "index_master_card_lineups_on_name"
 
   create_table "master_cards", :force => true do |t|
     t.integer "code",   :null => false
