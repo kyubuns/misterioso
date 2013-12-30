@@ -1,7 +1,6 @@
-# Helper methods defined here can be accessed in any controller or view in the application
 
 Server::App.helpers do
-  # def simple_helper_method
-  #  ...
-  # end
+  def online_characters
+    Character.where('updated_at > ?', Time.now - 10.minutes)
+  end
 end
