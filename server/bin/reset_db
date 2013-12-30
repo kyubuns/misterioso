@@ -1,0 +1,1 @@
+padrino rake ar:migrate:reset -e development
