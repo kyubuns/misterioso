@@ -66,4 +66,16 @@ describe Character do
       end
     end
   end
+
+  describe "#work" do
+    let(:character) { FactoryGirl.create :character, max_ap: 10, ap: 10 }
+
+    it "use ap when work" do
+      expect { character.work(3) }.to change { character.ap }.from(10).to(7)
+    end
+
+    it "raise error when not enough ap" do
+      expect { character.work(11) }.to raise_error
+    end
+  end
 end

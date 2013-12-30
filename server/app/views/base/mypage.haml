@@ -13,6 +13,8 @@
       %p 名前: #{current_account.character.name}
       %p スタミナ: #{current_account.character.ap} / #{current_account.character.max_ap}
       %p スタミナは1分ごとに1回復します。
+      %p
+        =link_to('働く', '/work')
 
     #footer
       = haml :footer
