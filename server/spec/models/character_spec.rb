@@ -101,7 +101,7 @@ describe Character do
 
   describe "#add_card" do
     let(:master_card) { FactoryGirl.create :master_card, code: 10, name: '南ことり' }
-    let(:character)   { FactoryGirl.create :character, max_ap: 10, ap: 10 }
+    let(:character)   { FactoryGirl.create :character }
     before(:each) { master_card.save! }
 
     it "add normal card" do
@@ -112,6 +112,37 @@ describe Character do
       card.master_card.should == master_card
 
       character.cards.count.should == 1
+    end
+  end
+
+  describe "#delete_card" do
+    let(:master_card1) { FactoryGirl.create :master_card, code: 1, name: 'Nにこ先輩' }
+    let(:master_card2) { FactoryGirl.create :master_card, code: 2, name: 'Rにこ先輩' }
+    let(:master_card3) { FactoryGirl.create :master_card, code: 3, name: 'URにこ先輩' }
+    let(:character)   { FactoryGirl.create :character }
+    before(:each) {
+      master_card1.save!
+      master_card2.save!
+      master_card3.save!
+      character.send(:add_card, 1)
+      character.send(:add_card, 2)
+      character.send(:add_card, 3)
+    }
+
+    it "first" do
+      character.cards.count.should == 3
+      character.cards[0].master_card.should == master_card1
+      character.cards[1].master_card.should == master_card2
+      character.cards[2].master_card.should == master_card3
+    end
+
+    it "delete card" do
+      delete_id = character.cards[0].id
+      character.delete_card delete_id
+
+      character.cards.count.should == 2
+      character.cards[0].master_card.should == master_card2
+      character.cards[1].master_card.should == master_card3
     end
   end
 end

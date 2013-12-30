@@ -1,7 +1,7 @@
 class Character < ActiveRecord::Base
 
   belongs_to :user
-  has_many   :cards,          dependent: :destroy
+  has_many   :cards,          dependent: :destroy, autosave: true
 
   validates  :name,           presence: true
   validates  :ap,             presence: true, numericality: true
@@ -33,6 +33,10 @@ class Character < ActiveRecord::Base
     self.ap = self.ap - 3
     self.money += Random.rand 500
     save!
+  end
+
+  def delete_card(id)
+    cards.delete(cards.find(id))
   end
 
   private
