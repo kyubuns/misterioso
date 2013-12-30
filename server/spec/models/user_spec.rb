@@ -18,6 +18,7 @@ describe User do
       user.role.should        == 'members'
 
       user.character.name.should == 'きゅぶんず'
+      user.character.save!
     end
   end
 end

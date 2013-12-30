@@ -51,10 +51,10 @@ describe Character do
       let(:now) { Time.local 2013,12,29,12,0,0 }
       before(:each) { Time.stub(:now).and_return now }
 
-      it "1 point / 1 minute" do
+      it "1 point / 3 minute" do
         character.ap = 0
 
-        Time.stub(:now).and_return now + 3.minutes
+        Time.stub(:now).and_return now + 9.minutes
         character.ap.should == 3
       end
 

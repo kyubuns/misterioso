@@ -17,7 +17,7 @@ class Character < ActiveRecord::Base
 
   def ap
     v = read_attribute(:ap)
-    dif = (Time.now.to_time.to_i - ap_recorded_at.to_time.to_i)/60
+    dif = (Time.now.to_time.to_i - ap_recorded_at.to_time.to_i)/180
     [v + dif, max_ap].min
   end
 
