@@ -18,7 +18,7 @@
         %font(color="#{equipment_color current_account.character}")#{equipment_name current_account.character}
       %p 所持金: #{current_account.character.money}ゴールド(#{current_account.character.money_rank}位)
       %p スタミナ: #{current_account.character.ap} / #{current_account.character.max_ap}
-      %p スタミナは2分ごとに1回復します。
+      %p(style="text-indent:2em;") スタミナは2分ごとに1回復します。
 
       %hr
       %p アクション
@@ -51,7 +51,7 @@
           %font(color='gray')お参りする
           %b [お金が足りません]
           お賽銭に1000ゴールドいれて、目標金額ピッタリにした人だけレアカードゲット！
-      %p
+      %p(style="text-indent:2em;")
         目標金額まで
         #{Jinja.nokori}
         ゴールド
