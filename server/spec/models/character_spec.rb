@@ -162,4 +162,27 @@ describe Character do
       expect { character.gacha }.to raise_error
     end
   end
+
+  describe "#ohuro" do
+    let(:character)   { FactoryGirl.create :character, ap: 0, max_ap: 10 }
+    let(:master_card) { FactoryGirl.create :master_card, code: 1, name: 'naota' }
+    before(:each) { character.send(:add_card, 1) }
+
+    it "max_ap 1up!" do
+      expect { character.ohuro }.to change { character.max_ap }.from(10).to(11)
+    end
+
+    it "restore ap" do
+      expect { character.ohuro }.to change { character.ap }.from(0).to(5)
+    end
+
+    it "use 1 card" do
+      expect { character.ohuro }.to change { character.cards.count }.from(1).to(0)
+    end
+
+    it "raise error, not enough card" do
+      character.ohuro
+      expect { character.ohuro }.to raise_error
+    end
+  end
 end

@@ -53,6 +53,14 @@ class Character < ActiveRecord::Base
     cards.delete(cards.find(id))
   end
 
+  def ohuro
+    raise "not enough card" if self.cards.count < 1
+    delete_card(self.cards.shuffle[0].id)
+    self.max_ap += 1
+    self.ap += 5
+    save!
+  end
+
   private
   def add_card(code)
     cards.create!({
