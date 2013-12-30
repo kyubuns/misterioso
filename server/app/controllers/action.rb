@@ -7,6 +7,11 @@ Server::App.controllers :action do
     }
   end
 
+  get :logout, :map => "/logout", :protect => true do
+    set_current_account(nil)
+    redirect url("/")
+  end
+
   get :work, :map => "/work", :protect => true do
     current_account.character.work
     redirect url("/mypage")
