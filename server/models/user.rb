@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
       user.provider_id = auth['info']['nickname']
       user.role = "members"
       user.create_character ({
-        # dummy datas
         name: auth['info']['name'],
+
+        # dummy datas
         max_ap: 10,
         ap:     10,
       })
