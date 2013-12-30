@@ -49,7 +49,7 @@ class Character < ActiveRecord::Base
       # ちゅんちゅん
       add_card(100)
     else
-      add_card(Random.rand(45)+1)
+      add_card(Random.rand(50)+1)
     end
     save!
   end
