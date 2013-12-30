@@ -44,13 +44,7 @@ class Character < ActiveRecord::Base
     price = 300 #テキトー
     raise "not enough money" if self.money < price
     self.money -= price
-    if Random.rand(1000) == 50
-      # 1/1000の確率でことりちゃんがでる
-      # ちゅんちゅん
-      add_card(100)
-    else
-      add_card(Random.rand(50)+1)
-    end
+    add_card MasterCardLineup.get('normal_gacha')
     save!
   end
 
