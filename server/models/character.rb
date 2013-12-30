@@ -73,6 +73,15 @@ class Character < ActiveRecord::Base
     save!
   end
 
+  def osaisen
+    price = 1000 #テキトー
+    raise "not enough money" if self.money < price
+    self.money -= price
+    reward = Jinja.osaisen price
+    add_card reward if reward != nil
+    save!
+  end
+
   private
   def add_card(code)
     cards.create!({

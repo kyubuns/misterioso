@@ -207,4 +207,24 @@ describe Character do
       character.equip_card.should == nil
     end
   end
+
+  describe "#osaisen" do
+    let(:character)   { FactoryGirl.create :character, money: 10000 }
+    before(:each) { Jinja.create money: 0, grade: 0 }
+
+    it "use money" do
+      expect { character.osaisen }.to change { character.money }.by(-1000)
+    end
+
+    it "get new card" do
+      Jinja.osaisen Jinja::TARGET_MONEY-500
+      Jinja.nokori.should == 500
+      expect { character.osaisen }.to change { character.cards.count }.by(1)
+    end
+
+    it "raise error, not enough money" do
+      character.money = 100
+      expect { character.osaisen }.to raise_error
+    end
+  end
 end
