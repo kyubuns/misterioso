@@ -21,6 +21,10 @@
       %p スタミナ: #{current_account.character.ap} / #{current_account.character.max_ap}
       %p(style="text-indent:2em;") スタミナは2分ごとに1回復します。
 
+      %p
+        %a(href="http://twitter.com/share?url=http://kyubuns.net:3000/&text=#{current_account.character.name}は、戦闘力: #{current_account.character.power}(#{current_account.character.power_rank}位)、所持金：#{current_account.character.money}ゴールド(#{current_account.character.money_rank}位)です。&hashtags=枠Work")
+          今の順位をツイートする！
+
       %hr
       %h3 アクション
       - if @current_account.character.ap >= 3
