@@ -25,7 +25,7 @@ class Character < ActiveRecord::Base
 
   def equip_card
     return nil if equip_card_id == nil
-    self.cards.find(equip_card_id)
+    self.cards.find_by_id(equip_card_id)
   end
 
   # ranking
