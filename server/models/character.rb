@@ -8,6 +8,7 @@ class Character < ActiveRecord::Base
   validates  :max_ap,         presence: true, numericality: true
   validates  :ap_recorded_at, presence: true
   validates  :money,          presence: true, numericality: true
+  validates  :power,          presence: true, numericality: true
 
   # AP
   def ap=(value)
@@ -28,9 +29,9 @@ class Character < ActiveRecord::Base
     self.cards.find_by_id(equip_card_id)
   end
 
-  def power
+  def calc_power
     power = 0
-    cards.map{ |card| power += card.master_card.rarity**4 }
+    cards.map{ |card| power += card.master_card.rarity**4 if card.master_card }
     power
   end
 
@@ -56,6 +57,7 @@ class Character < ActiveRecord::Base
 
   def delete_card(id)
     cards.delete(cards.find(id))
+    self.power = calc_power
   end
 
   def ohuro
@@ -91,8 +93,8 @@ class Character < ActiveRecord::Base
 
   private
   def add_card(code)
-    cards.create!({
-      master_card_code: code
-    })
+    card = cards.create!( master_card_code: code )
+    self.power = calc_power
+    card
   end
 end

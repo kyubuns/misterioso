@@ -7,5 +7,6 @@ FactoryGirl.define do
     ap             Forgery::Basic.number(at_least: 0, at_most: 100)
     ap_recorded_at Time.now
     money          Forgery::Basic.number(at_least: 0, at_most: 1000)
+    power          0
   end
 end

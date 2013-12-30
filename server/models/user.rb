@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
         max_ap: 30,
         ap:     30,
         money:  0,
+        power:  0,
       })
     end
   end
