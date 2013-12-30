@@ -105,6 +105,7 @@ GEM
     tzinfo (0.3.38)
     url_mount (0.2.1)
       rack
+    weighted_randomizer (0.1.2)
 
 PLATFORMS
   ruby
@@ -123,3 +124,4 @@ DEPENDENCIES
   rack-test
   rake
   rspec
+  weighted_randomizer

@@ -5,8 +5,9 @@ class MasterCardLineup < ActiveRecord::Base
   validates :probability, presence: true, numericality: true
 
   def self.get(name)
-    Random.rand get_total_probability(name)
-    #???????????
+    queues = {}
+    MasterCardLineup.where('name = ?', name).map{ |lineup| queues[lineup.card_code] = lineup.probability }
+    WeightedRandomizer.new(queues).sample
   end
 
   private
