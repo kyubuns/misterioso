@@ -21,4 +21,9 @@ Server::App.controllers :action do
     current_account.character.ohuro
     redirect url("/mypage")
   end
+
+  get :equip, :map => "/equip/:id" do
+    current_account.character.equip params[:id]
+    redirect url("/mypage")
+  end
 end
