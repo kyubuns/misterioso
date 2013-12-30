@@ -201,5 +201,10 @@ describe Character do
       dummy_id = 100
       expect { character.equip(dummy_id) }.to raise_error
     end
+
+    it "no equip when delete equipping card" do
+      character.equip_card_id = 100
+      character.equip_card.should == nil
+    end
   end
 end
