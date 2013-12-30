@@ -22,15 +22,30 @@
         %p
           =link_to('働く', '/work')
           スタミナを3消費して、お金をいくらかゲット！
+      - else
+        %p
+          %font(color='gray')働く
+          %b [スタミナが足りません]
+          スタミナを3消費して、お金をいくらかゲット！
 
       - if @current_account.character.money >= 300
         %p
           =link_to('ガチャる', '/gacha')
           300ゴールド消費して、カードをゲット！
+      - else
+        %p
+          %font(color='gray')ガチャる
+          %b [お金が足りません]
+          300ゴールド消費して、カードをゲット！
 
       - if @current_account.character.cards.count >= 1
         %p
           =link_to('風呂る', '/ohuro')
+          カードをランダムで1枚消費して、最大スタミナを1増加+スタミナ1回復
+      - else
+        %p
+          %font(color='gray')風呂る
+          %b [カードが足りません]
           カードをランダムで1枚消費して、最大スタミナを1増加+スタミナ1回復
 
       %hr
