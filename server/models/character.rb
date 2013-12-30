@@ -67,7 +67,7 @@ class Character < ActiveRecord::Base
   end
 
   def equip(id)
-    card = self.cards.find(id)
+    card = self.cards.find_by_id(id)
     raise "don't have the card" if card == nil
     self.equip_card_id = card.id
     save!

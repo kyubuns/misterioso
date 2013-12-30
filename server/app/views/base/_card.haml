@@ -1,3 +1,3 @@
 %p
   #{link_to '[装備]', url_for(:action, :equip, :id => card.id)}
-  #{card.master_card.name}
+  %font(color="#{card_color card}")#{card.master_card.name}

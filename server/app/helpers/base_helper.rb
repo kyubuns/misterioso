@@ -20,8 +20,12 @@ Server::App.helpers do
   end
 
   def equipment_color(character)
-    if character.equip_card
-      EQUIPMENT_COLOR_TABLE[character.equip_card.master_card.rarity] || EQUIPMENT_COLOR_DEFAULT
+    card_color character.equip_card
+  end
+
+  def card_color(card)
+    if card
+      EQUIPMENT_COLOR_TABLE[card.master_card.rarity] || EQUIPMENT_COLOR_DEFAULT
     else
       EQUIPMENT_COLOR_NOCARD
     end
