@@ -1,10 +1,10 @@
 Server::App.controllers :base do
-	get :index, :map => "/" do
-		redirect url("/home") if current_account
-		render "base/index"
-	end
+  get :index, :map => "/" do
+    render "base/index"
+  end
 
-	get :home, :map => "/home" do
-		"Provider: #{current_account.provider}, uid: #{current_account.uid}"
-	end
+  get :mypage, :map => "/mypage" do
+    redirect url("/home") unless current_account
+    render "base/mypage"
+  end
 end
