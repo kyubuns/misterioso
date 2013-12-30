@@ -1,12 +1,13 @@
 class Character < ActiveRecord::Base
 
   belongs_to :user
+  has_many   :cards,          dependent: :destroy
 
-  validates :name,           presence: true
-  validates :ap,             presence: true, numericality: true
-  validates :max_ap,         presence: true, numericality: true
-  validates :ap_recorded_at, presence: true
-  validates :money,          presence: true, numericality: true
+  validates  :name,           presence: true
+  validates  :ap,             presence: true, numericality: true
+  validates  :max_ap,         presence: true, numericality: true
+  validates  :ap_recorded_at, presence: true
+  validates  :money,          presence: true, numericality: true
 
   # AP
   def ap=(value)
