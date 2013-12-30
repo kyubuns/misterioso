@@ -19,5 +19,14 @@
           =link_to('働く', '/work')
           スタミナを3消費して、お金をいくらかゲット！
 
+      - if @current_account.character.money >= 300
+        %p
+          =link_to('ガチャる', '/gacha')
+          300ゴールド消費して、カードをゲット！
+
+      %hr
+      %p 所持カード
+      #cards= partial 'base/card', :collection => @current_account.character.cards
+
       %div
         = haml :footer

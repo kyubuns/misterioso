@@ -11,4 +11,9 @@ Server::App.controllers :action do
     current_account.character.work
     redirect url("/mypage")
   end
+
+  get :gacha, :map => "/gacha" do
+    current_account.character.gacha
+    redirect url("/mypage")
+  end
 end

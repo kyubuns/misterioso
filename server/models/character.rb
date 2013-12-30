@@ -40,6 +40,7 @@ class Character < ActiveRecord::Base
     raise "not enough money" if self.money < price
     self.money -= price
     add_card(Random.rand(43)+1)
+    save!
   end
 
   def delete_card(id)
