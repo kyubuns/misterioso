@@ -6,20 +6,17 @@
     = stylesheet_link_tag 'bootstrap.min'
     = javascript_include_tag 'jquery', 'bootstrap.min'
   %body
-    #header
+    %div(class='container')
       = haml :header
 
-    #container
       %p 名前: #{current_account.character.name}
       %p 所持金: #{current_account.character.money}ゴールド
       %p スタミナ: #{current_account.character.ap} / #{current_account.character.max_ap}
       %p スタミナは2分ごとに1回復します。
 
-    #actions
       - if @current_account.character.ap >= 3
         %p
           =link_to('働く', '/work')
           スタミナを3消費して、お金をいくらかゲット！
 
-    #footer
       = haml :footer
