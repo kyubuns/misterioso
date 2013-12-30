@@ -27,7 +27,7 @@ describe Jinja do
     end
 
     it "get reward if reach TARGET_MONEY" do
-      Jinja.osaisen(Jinja::TARGET_MONEY + 1000).should_not == nil
+      Jinja.osaisen(Jinja::TARGET_MONEY).should_not == nil
     end
 
     it "grade up jinja if reach TARGET_MONEY" do

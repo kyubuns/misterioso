@@ -10,7 +10,7 @@ class Jinja < ActiveRecord::Base
     jinja.money += price
 
     reward = nil
-    if jinja.money > TARGET_MONEY
+    if jinja.money >= TARGET_MONEY
       jinja.grade_up
       reward = get_random_card_id
     end
