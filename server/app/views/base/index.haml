@@ -10,10 +10,14 @@
     %div(class='container')
       = haml :header
 
+      %h3 ログイン
       - if @current_account == nil
         =link_to('Twitterでログイン', '/auth/twitter')
       - else
-        =link_to('Mypageはこちら', '/mypage')
+        %p
+          =link_to('Mypageはこちら', '/mypage')
+        %p
+          =link_to('ログアウトはこちら', '/logout')
 
       %div
         = haml :footer

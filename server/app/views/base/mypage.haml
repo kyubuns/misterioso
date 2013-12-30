@@ -10,7 +10,7 @@
     %div(class='container')
       = haml :header
 
-      %p ステータス
+      %h3 ステータス
 
       %p 名前: #{current_account.character.name}
       %p
@@ -21,35 +21,41 @@
       %p(style="text-indent:2em;") スタミナは2分ごとに1回復します。
 
       %hr
-      %p アクション
+      %h3 アクション
       - if @current_account.character.ap >= 3
         %p
           =link_to('働く', '/work')
+        %p(style="text-indent:2em;")
           スタミナを3消費して、お金をいくらかゲット！
       - else
         %p
           %font(color='gray')働く
           %b [スタミナが足りません]
+        %p(style="text-indent:2em;")
           スタミナを3消費して、お金をいくらかゲット！
 
       - if @current_account.character.money >= 300
         %p
           =link_to('ガチャる', '/gacha')
+        %p(style="text-indent:2em;")
           300ゴールド消費して、カードをゲット！
       - else
         %p
           %font(color='gray')ガチャる
           %b [お金が足りません]
+        %p(style="text-indent:2em;")
           300ゴールド消費して、カードをゲット！
 
       - if @current_account.character.money >= 1000
         %p
           =link_to('お参りする', '/osaisen')
+        %p(style="text-indent:2em;")
           お賽銭に1000ゴールドいれて、目標金額ピッタリにした人だけレアカードゲット！
       - else
         %p
           %font(color='gray')お参りする
           %b [お金が足りません]
+        %p(style="text-indent:2em;")
           お賽銭に1000ゴールドいれて、目標金額ピッタリにした人だけレアカードゲット！
       %p(style="text-indent:2em;")
         目標金額まで
@@ -59,15 +65,17 @@
       - if @current_account.character.cards.count >= 1
         %p
           =link_to('風呂る', '/ohuro')
+        %p(style="text-indent:2em;")
           カードをランダムで1枚消費して、最大スタミナを1増加+スタミナ1回復。装備品は溶けなくなった。
       - else
         %p
           %font(color='gray')風呂る
           %b [カードが足りません]
+        %p(style="text-indent:2em;")
           カードをランダムで1枚消費して、最大スタミナを1増加+スタミナ1回復。装備品は溶けなくなった。
 
       %hr
-      %p 所持カード
+      %h3 所持カード
       #cards= partial 'base/card', :collection => @current_account.character.cards
 
       %div
