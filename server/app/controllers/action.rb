@@ -15,7 +15,7 @@ Server::App.controllers :action do
   get :work, :map => "/work", :protect => true do
     begin
       current_account.character.work
-    rescue
+    rescue OperationError
     end
     redirect url("/mypage")
   end
@@ -23,7 +23,7 @@ Server::App.controllers :action do
   get :gacha, :map => "/gacha", :protect => true do
     begin
       current_account.character.gacha
-    rescue
+    rescue OperationError
     end
     redirect url("/mypage")
   end
@@ -31,7 +31,7 @@ Server::App.controllers :action do
   get :ohuro, :map => "/ohuro", :protect => true do
     begin
       current_account.character.ohuro
-    rescue
+    rescue OperationError
     end
     redirect url("/mypage")
   end
@@ -39,7 +39,7 @@ Server::App.controllers :action do
   get :equip, :map => "/equip/:id", :protect => true do
     begin
       current_account.character.equip params[:id]
-    rescue
+    rescue OperationError
     end
     redirect url("/mypage")
   end
@@ -47,7 +47,7 @@ Server::App.controllers :action do
   get :osaisen, :map => "/osaisen", :protect => true do
     begin
       current_account.character.osaisen
-    rescue
+    rescue OperationError
     end
     redirect url("/mypage")
   end

@@ -12,7 +12,7 @@ class Character < ActiveRecord::Base
 
   # AP
   def ap=(value)
-    raise "not enough ap" if value < 0
+    raise OperationError, "not enough ap" if value < 0
     value = max_ap if value > max_ap
     write_attribute(:ap, value)
     write_attribute(:ap_recorded_at, Time.now)
@@ -53,7 +53,7 @@ class Character < ActiveRecord::Base
 
   def gacha
     price = 300 #テキトー
-    raise "not enough money" if self.money < price
+    raise OperationError, "not enough money" if self.money < price
     self.money -= price
     add_card MasterCardLineup.get('normal_gacha')
     save!
@@ -66,7 +66,7 @@ class Character < ActiveRecord::Base
 
   def ohuro
     ids = not_equipping_card_ids
-    raise "not enough card" if ids.count < 1
+    raise OperationError, "not enough card" if ids.count < 1
     delete_card(ids.shuffle[0])
     self.max_ap += 1
     self.ap += 1
@@ -81,14 +81,14 @@ class Character < ActiveRecord::Base
 
   def equip(id)
     card = self.cards.find_by_id(id)
-    raise "don't have the card" if card == nil
+    raise OperationError, "don't have the card" if card == nil
     self.equip_card_id = card.id
     save!
   end
 
   def osaisen
     price = 1000 #テキトー
-    raise "not enough money" if self.money < price
+    raise OperationError, "not enough money" if self.money < price
     self.money -= price
     reward = Jinja.osaisen price
     add_card reward if reward != nil

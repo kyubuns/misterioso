@@ -38,7 +38,7 @@ describe MasterCardLineup do
     end
 
     it "no data" do
-        expect { MasterCardLineup.get('dummy') }.to raise_error
+        expect { MasterCardLineup.get('dummy') }.to raise_error(RuntimeError)
     end
   end
 end

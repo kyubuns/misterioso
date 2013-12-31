@@ -41,7 +41,7 @@ describe Character do
       end
 
       it "raise error, if ap < 0" do
-        expect { character.ap -= 10 }.to raise_error
+        expect { character.ap -= 10 }.to raise_error(OperationError)
       end
 
     end
@@ -76,7 +76,7 @@ describe Character do
 
     it "raise error when not enough ap" do
       character.ap = 1
-      expect { character.work }.to raise_error
+      expect { character.work }.to raise_error(OperationError)
     end
 
     it "get money!" do
@@ -162,7 +162,7 @@ describe Character do
 
     it "raise error, not enough money" do
       character.money = 100
-      expect { character.gacha }.to raise_error
+      expect { character.gacha }.to raise_error(OperationError)
     end
   end
 
@@ -189,12 +189,12 @@ describe Character do
 
       character.equip(1)
       expect { character.ohuro }.to change { character.cards.count }.from(2).to(1)
-      expect { character.ohuro }.to raise_error
+      expect { character.ohuro }.to raise_error(OperationError)
     end
 
     it "raise error, not enough card" do
       character.ohuro
-      expect { character.ohuro }.to raise_error
+      expect { character.ohuro }.to raise_error(OperationError)
     end
   end
 
@@ -211,7 +211,7 @@ describe Character do
 
     it "can't equip card if dummy id" do
       dummy_id = 100
-      expect { character.equip(dummy_id) }.to raise_error
+      expect { character.equip(dummy_id) }.to raise_error(OperationError)
     end
 
     it "no equip when delete equipping card" do
@@ -239,7 +239,7 @@ describe Character do
 
     it "raise error, not enough money" do
       character.money = 100
-      expect { character.osaisen }.to raise_error
+      expect { character.osaisen }.to raise_error(OperationError)
     end
   end
 
