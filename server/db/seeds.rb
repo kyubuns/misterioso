@@ -135,3 +135,4 @@ MasterCardLineup.create(name: 'jinja', card_code: 212, probability: 100)
 MasterCardLineup.create(name: 'jinja', card_code: 213, probability: 50)
 
 MasterCard.create(code: 1000, rarity:5, name: 'お祝い枠＼ユーザー100人突破／')
+MasterCard.create(code: 1001, rarity:5, name: '年賀状')
