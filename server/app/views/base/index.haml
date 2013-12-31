@@ -10,6 +10,12 @@
     %div(class='container')
       = haml :header
 
+      %h3 枠Work
+      %p padrinoの勉強に何か作ろうと思って作った結果、こうなりました。
+      %p
+        =link_to('ソースコードはこちら', 'http://github.com/kyubuns/misterioso/')
+
+      %hr
       %h3 ログイン
       - if @current_account == nil
         =link_to('Twitterでログイン', '/auth/twitter')
