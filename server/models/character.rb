@@ -86,6 +86,11 @@ class Character < ActiveRecord::Base
     save!
   end
 
+  def purge
+    self.equip_card_id = nil
+    save!
+  end
+
   def osaisen
     price = 1000 #テキトー
     raise OperationError, "not enough money" if self.money < price

@@ -44,6 +44,14 @@ Server::App.controllers :action do
     redirect url("/mypage")
   end
 
+  get :equip, :map => "/purge", :protect => true do
+    begin
+      current_account.character.purge
+    rescue OperationError
+    end
+    redirect url("/mypage")
+  end
+
   get :osaisen, :map => "/osaisen", :protect => true do
     begin
       current_account.character.osaisen

@@ -201,12 +201,15 @@ describe Character do
   describe "#equip_card" do
     let(:character)   { FactoryGirl.create :character, ap: 0, max_ap: 10 }
     let(:master_card) { FactoryGirl.create :master_card, code: 1, name: 'naota' }
-    before(:each) { character.send(:add_card, 1) }
+    before(:each) {
+      master_card.save!
+      character.send(:add_card, 1)
+    }
 
     it "equip card" do
       item_id = character.cards[0].id
       expect { character.equip(item_id) }.to change { character.equip_card_id }.from(nil).to(item_id)
-      character.equip_card.master_card == master_card
+      character.equip_card.master_card.should == master_card
     end
 
     it "can't equip card if dummy id" do
@@ -216,6 +219,28 @@ describe Character do
 
     it "no equip when delete equipping card" do
       character.equip_card_id = 100
+      character.equip_card.should == nil
+    end
+  end
+
+  describe "#purge_card" do
+    let(:character)   { FactoryGirl.create :character, ap: 0, max_ap: 10 }
+    let(:master_card) { FactoryGirl.create :master_card, code: 1, name: 'hoge' }
+    before(:each) {
+      master_card.save!
+      character.send(:add_card, 1)
+    }
+
+    it "purge card" do
+      character.equip(1)
+      character.equip_card.master_card.should == master_card
+
+      character.purge
+      character.equip_card.should == nil
+    end
+
+    it "when no equipping card" do
+      character.purge
       character.equip_card.should == nil
     end
   end
