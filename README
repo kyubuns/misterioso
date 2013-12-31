@@ -8,9 +8,6 @@ Twitterでログインして
 ここで動いてるかも知れないです↓
 http://kyubuns.net:3000/
 
-[仕事]
-↓スタミナ-=3, お金+=Random(0, 500]
-[ガチャ]
-↓お金-=300, カード
-？？？
-
+このコードを動かすときは、
+server/lib/omniauth_initializer.rb
+にあるtwitterのコンシューマーキーとシークレット書き換えてください。
