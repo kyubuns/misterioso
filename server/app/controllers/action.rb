@@ -60,7 +60,7 @@ Server::App.controllers :action do
     redirect url("/mypage")
   end
 
-  get :equip, :map => "/purge", :protect => true do
+  get :purge, :map => "/purge", :protect => true do
     begin
       current_account.character.purge
     rescue OperationError
