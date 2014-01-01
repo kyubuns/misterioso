@@ -2,9 +2,5 @@ set -e
 cp ../../misterioso_deploy/database.rb config/
 cp ../../misterioso_deploy/omniauth_initializer.rb lib/
 cp ../../misterioso_deploy/footer.haml app/views/
-mkdir -p log/
-mkdir -p tmp/pids/
 padrino rake ar:migrate -e production
 padrino rake db:seed -e production
-bundle exec unicorn -c config/unicorn.rb -E production -l kyubuns.net:3000 -D
-kill -USR2 'cat tmp/pids/unicorn.pid'

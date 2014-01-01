@@ -1,0 +1,6 @@
+set -e
+mkdir -p log/
+mkdir -p tmp/pids/
+padrino rake ar:migrate -e development
+padrino rake db:seed -e development
+bundle exec unicorn -c config/unicorn.rb -E development -l 0.0.0.0:3000
