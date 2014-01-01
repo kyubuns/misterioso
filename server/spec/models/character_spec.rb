@@ -85,6 +85,20 @@ describe Character do
     end
   end
 
+  describe "#die" do
+    let(:character) { FactoryGirl.create :character, max_ap: 10, ap: 10, money:0 }
+
+    it "use 9 ap when work*3" do
+      character.ap = 9
+      expect { character.die }.to change { character.ap }.from(9).to(0)
+    end
+
+    it "get money! work * 3" do
+      Random.stub(:rand).and_return 100
+      expect { character.die }.to change { character.money }.from(0).to(300)
+    end
+  end
+
   describe "#money_ranking" do
     let(:character1) { FactoryGirl.create :character, money:100 }
     let(:character2) { FactoryGirl.create :character, money:200 }

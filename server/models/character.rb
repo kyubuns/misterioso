@@ -51,6 +51,10 @@ class Character < ActiveRecord::Base
     save!
   end
 
+  def die
+    work until self.ap < 3
+  end
+
   def gacha
     price = 300 #テキトー
     raise OperationError, "not enough money" if self.money < price

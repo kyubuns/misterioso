@@ -20,6 +20,14 @@ Server::App.controllers :action do
     redirect url("/mypage")
   end
 
+  get :die, :map => "/die", :protect => true do
+    begin
+      current_account.character.die
+    rescue OperationError
+    end
+    redirect url("/mypage")
+  end
+
   get :gacha, :map => "/gacha", :protect => true do
     begin
       current_account.character.gacha
