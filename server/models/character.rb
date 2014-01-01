@@ -30,9 +30,7 @@ class Character < ActiveRecord::Base
   end
 
   def calc_power
-    power = 0
-    cards.map{ |card| power += card.master_card.rarity**4 if card.master_card }
-    power
+    self.cards.map{ |card| card.master_card }.compact.inject(0){ |sum, master_card| sum + master_card.rarity**4 }
   end
 
   # ranking
