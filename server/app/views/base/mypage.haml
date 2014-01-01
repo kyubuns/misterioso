@@ -75,7 +75,7 @@
         カードをランダムで1枚消費して、最大スタミナを1増加+スタミナ1回復。装備品は溶けなくなった。
 
       %hr
-      %h3 所持カード
+      %h3 所持カード(#{current_account.character.cards.count}枚)
       #cards= partial 'base/card', :collection => @current_account.character.cards
 
       %div
