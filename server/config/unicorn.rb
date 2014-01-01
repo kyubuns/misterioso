@@ -20,4 +20,4 @@ before_fork do |server, worker|
   end
 end
 
-puts '===== SERVER START ====='
+puts "===== SERVER START #{Time.now} ====="
