@@ -131,18 +131,18 @@ describe Character do
 
     it "first" do
       character.cards.count.should == 3
-      character.cards[0].master_card.should == master_card1
-      character.cards[1].master_card.should == master_card2
-      character.cards[2].master_card.should == master_card3
+      character.cards.first.master_card.should == master_card1
+      character.cards.second.master_card.should == master_card2
+      character.cards.third.master_card.should == master_card3
     end
 
     it "delete card" do
-      delete_id = character.cards[0].id
+      delete_id = character.cards.first.id
       character.delete_card delete_id
 
       character.cards.count.should == 2
-      character.cards[0].master_card.should == master_card2
-      character.cards[1].master_card.should == master_card3
+      character.cards.first.master_card.should == master_card2
+      character.cards.second.master_card.should == master_card3
     end
   end
 
@@ -207,7 +207,7 @@ describe Character do
     }
 
     it "equip card" do
-      item_id = character.cards[0].id
+      item_id = character.cards.first.id
       expect { character.equip(item_id) }.to change { character.equip_card_id }.from(nil).to(item_id)
       character.equip_card.master_card.should == master_card
     end
