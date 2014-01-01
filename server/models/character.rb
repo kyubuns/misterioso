@@ -72,12 +72,17 @@ class Character < ActiveRecord::Base
     self.power = calc_power
   end
 
-  def ohuro
+  def ohuro(save = true)
     ids = not_equipping_card_ids
     raise OperationError, "not enough card" if ids.count < 1
     delete_card(ids.shuffle[0])
     self.max_ap += 1
     self.ap += 1
+    save! if save
+  end
+
+  def nagaburo
+    ohuro(false) until self.not_equipping_card_ids.count < 1
     save!
   end
 

@@ -52,6 +52,14 @@ Server::App.controllers :action do
     redirect url("/mypage")
   end
 
+  get :nagaburo, :map => "/nagaburo", :protect => true do
+    begin
+      current_account.character.nagaburo
+    rescue OperationError
+    end
+    redirect url("/mypage")
+  end
+
   get :equip, :map => "/equip/:id", :protect => true do
     begin
       current_account.character.equip params[:id]

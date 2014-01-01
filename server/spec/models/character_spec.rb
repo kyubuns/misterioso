@@ -227,6 +227,28 @@ describe Character do
     end
   end
 
+  describe "#nagaburo" do
+    let(:character)   { FactoryGirl.create :character, ap: 0, max_ap: 10 }
+    let(:master_card) { FactoryGirl.create :master_card, code: 1, name: 'naota' }
+    before(:each) {
+      character.send(:add_card, 1)
+      character.send(:add_card, 1)
+      character.send(:add_card, 1)
+    }
+
+    it "max_ap 3up!" do
+      expect { character.nagaburo }.to change { character.max_ap }.from(10).to(13)
+    end
+
+    it "restore 3 ap" do
+      expect { character.nagaburo }.to change { character.ap }.from(0).to(3)
+    end
+
+    it "use 3 cards" do
+      expect { character.nagaburo }.to change { character.cards.count }.from(3).to(0)
+    end
+  end
+
   describe "#equip_card" do
     let(:character)   { FactoryGirl.create :character, ap: 0, max_ap: 10 }
     let(:master_card) { FactoryGirl.create :master_card, code: 1, name: 'naota' }
