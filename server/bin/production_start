@@ -7,4 +7,3 @@ mkdir -p tmp/pids/
 padrino rake ar:migrate -e production
 padrino rake db:seed -e production
 bundle exec unicorn -c config/unicorn.rb -E production -l kyubuns.net:3000 -D
-kill -USR2 'cat tmp/pids/unicorn.pid'
