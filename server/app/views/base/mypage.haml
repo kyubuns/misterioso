@@ -42,6 +42,7 @@
       - if @current_account.character.money >= 300
         %p
           =link_to('ガチャる', '/gacha')
+          =link_to('有り金を全てガチャで溶かす', '/numa')
       - else
         %p
           %font(color='gray')ガチャる

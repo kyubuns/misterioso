@@ -36,6 +36,14 @@ Server::App.controllers :action do
     redirect url("/mypage")
   end
 
+  get :numa, :map => "/numa", :protect => true do
+    begin
+      current_account.character.numa
+    rescue OperationError
+    end
+    redirect url("/mypage")
+  end
+
   get :ohuro, :map => "/ohuro", :protect => true do
     begin
       current_account.character.ohuro

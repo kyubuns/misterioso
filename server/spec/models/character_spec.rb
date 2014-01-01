@@ -180,6 +180,21 @@ describe Character do
     end
   end
 
+  describe "#numa" do
+    let(:character)   { FactoryGirl.create :character, money: 1000 }
+    before(:each) {
+      MasterCardLineup.create(name: 'normal_gacha', card_code: 1, probability:  1)
+    }
+
+    it "use money" do
+      expect { character.numa }.to change { character.money }.from(1000).to(100)
+    end
+
+    it "get new card" do
+      expect { character.numa }.to change { character.cards.count }.from(0).to(3)
+    end
+  end
+
   describe "#ohuro" do
     let(:character)   { FactoryGirl.create :character, ap: 0, max_ap: 10 }
     let(:master_card) { FactoryGirl.create :master_card, code: 1, name: 'naota' }

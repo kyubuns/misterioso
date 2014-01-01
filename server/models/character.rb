@@ -45,21 +45,27 @@ class Character < ActiveRecord::Base
   end
 
   # action
-  def work
+  def work(save = true)
     self.ap = self.ap - 3
     self.money += Random.rand 500
-    save!
+    save! if save
   end
 
   def die
-    work until self.ap < 3
+    work(false) until self.ap < 3
+    save!
   end
 
-  def gacha
+  def gacha(save = true)
     price = 300 #テキトー
     raise OperationError, "not enough money" if self.money < price
     self.money -= price
     add_card MasterCardLineup.get('normal_gacha')
+    save! if save
+  end
+
+  def numa
+    gacha(false) until self.money < 300
     save!
   end
 
