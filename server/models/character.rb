@@ -50,8 +50,10 @@ class Character < ActiveRecord::Base
   end
 
   def die
-    work(false) until self.ap < 3
-    save!
+    User.transaction do
+      work(false) until self.ap < 3
+      save!
+    end
   end
 
   def gacha(save = true)
@@ -63,8 +65,10 @@ class Character < ActiveRecord::Base
   end
 
   def numa
-    gacha(false) until self.money < 300
-    save!
+    User.transaction do
+      gacha(false) until self.money < 300
+      save!
+    end
   end
 
   def delete_card(id)
@@ -82,8 +86,10 @@ class Character < ActiveRecord::Base
   end
 
   def nagaburo
-    ohuro(false) until self.not_equipping_card_ids.count < 1
-    save!
+    User.transaction do
+      ohuro(false) until self.not_equipping_card_ids.count < 1
+      save!
+    end
   end
 
   def not_equipping_card_ids
